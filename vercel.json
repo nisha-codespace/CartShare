@@ -1,7 +1,10 @@
 {
   "version": 2,
-  "public": "dist/client",
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/api" }
+  "builds": [
+    { "src": "api/index.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/api" }
   ]
 }
