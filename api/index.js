@@ -1,6 +1,15 @@
+import { Readable } from 'stream';
 import serverEntry from '../dist/server/server.js';
 
 const app = serverEntry.default ?? serverEntry;
+
+function getRequestBody(req) {
+  if (req.method === 'GET' || req.method === 'HEAD') return undefined;
+  if (typeof Readable.toWeb === 'function') {
+    return Readable.toWeb(req);
+  }
+  return req;
+}
 
 export default async function handler(req, res) {
   const protocol = req.headers['x-forwarded-proto'] || 'https';
@@ -10,7 +19,7 @@ export default async function handler(req, res) {
   const request = new Request(url.toString(), {
     method: req.method,
     headers: req.headers,
-    body: req.method === 'GET' || req.method === 'HEAD' ? undefined : req,
+    body: getRequestBody(req),
   });
 
   const response = await app.fetch(request, {}, {});
