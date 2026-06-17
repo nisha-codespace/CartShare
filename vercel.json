@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "public": "dist/client",
   "rewrites": [
     { "source": "/(.*)", "destination": "/api" }
   ]
