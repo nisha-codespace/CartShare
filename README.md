@@ -1,41 +1,71 @@
 # CartShare — Collaborative shopping carts
 
-Project built for the CartShare internship Studio challenge. Convert a prototype into a lightweight, real-time shared cart app where users create or join Rooms, add/remove items collaboratively, and print an audit-ready receipt.
+CartShare is a group shopping web app built for the internship Studio challenge. It turns a prototype into a working collaborative cart experience where students can create or join a Room, add items together, track shared cart activity, and print a receipt for split payment.
 
-**Quick Links**
-- **Landing page**: [src/routes/index.tsx](src/routes/index.tsx#L1)
-- **Room (cart) UI**: [src/routes/room.$code.tsx](src/routes/room.$code.tsx#L1)
-- **Printable receipt**: [src/routes/receipt.$code.tsx](src/routes/receipt.$code.tsx#L1)
-- **Client-side store & sync**: [src/lib/cartshare/store.ts](src/lib/cartshare/store.ts#L1)
+## Key features
 
-**Features**
-- **Create / Join Room**: Generate or enter a room code to join a shared cart.
-- **Real-time sync (per-device)**: Cart state persists in browser storage and syncs across tabs/windows for the same device.
-- **Activity log**: See who added/removed items and when.
-- **Printable receipt**: Clean, print-ready receipt with per-person split and shipping calculations.
+- **Create or join Rooms** with a code
+- **Shared cart across tabs** using browser storage and tab-sync
+- **Live activity log** showing who added, updated, or removed items
+- **Checkout progress bar** with free-shipping threshold tracking
+- **Printable receipt** with per-person split and shipping details
 
-**Prerequisites**
-- **Node.js** 16+ (recommended 18+)
-- Git
+## Project structure
 
-**Run locally**
+- `src/routes/index.tsx` — landing page + room creation/join flow
+- `src/routes/room.$code.tsx` — shared room/cart experience
+- `src/routes/receipt.$code.tsx` — printable receipt page
+- `src/lib/cartshare/store.ts` — local storage persistence, room state, and sync logic
+- `src/styles.css` — base styling for responsive layout
+
+## Tech stack
+
+- React 19
+- Vite
+- Tailwind CSS
+- TanStack Router + React Start
+- Lucide icons
+- Local browser storage for persistence
+
+## Prerequisites
+
+- Node.js 16+ (recommend 18+)
+- npm
+
+## Run locally
+
 1. Install dependencies:
 
 ```bash
 npm install
 ```
 
-2. Start dev server:
+2. Start the development server:
 
 ```bash
 npm run dev
 ```
 
-Open http://localhost:5173 and use the UI to create a room. To simulate multiple participants, open the same room URL in another tab and enter different names.
+3. Open the app:
 
-**Build & Preview**
+```text
+http://localhost:5173
+```
+
+> Tip: Open the same room URL in a second browser tab to simulate another participant.
+
+## Build & preview
 
 ```bash
 npm run build
 npm run preview
 ```
+
+This project has been verified with a successful build using Vercel.
+
+## Deployment
+
+CartShare is ready for static deployment. Use Vercel, Netlify, or GitHub Pages with the Vite build output.
+
+- Build command: `npm run build`
+- Output directory: `dist`
